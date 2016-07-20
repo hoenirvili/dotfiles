@@ -6,3 +6,5 @@ source ~/.config/nvim/rc/airline.vim
 source ~/.config/nvim/rc/ycmd.vim
 source ~/.config/nvim/rc/neomake.vim
 source ~/.config/nvim/rc/ctrlp.vim
+source ~/.config/nvim/rc/clang.vim
+source ~/.config/nvim/rc/cscope_maps.vim

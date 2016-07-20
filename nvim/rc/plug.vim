@@ -14,6 +14,7 @@ Plug 'hail2u/vim-css3-syntax', {'for': 'css'}
 Plug 'elzr/vim-json', {'for': 'json'}
 Plug 'digitaltoad/vim-jade', {'for': 'jade'}
 Plug 'stanangeloff/php.vim', {'for': 'php'}
+Plug 'rhysd/vim-clang-format', {'for': 'c'}
 
 " On-load
 Plug 'shawncplus/phpcomplete.vim'
@@ -29,7 +30,6 @@ Plug 'benekastah/neomake'
 Plug 'tpope/vim-haml'
 Plug 'joonty/vdebug'
 Plug 'kien/ctrlp.vim'
-
 " Color scheme switcher
 Plug 'xolox/vim-colorscheme-switcher'
 Plug 'xolox/vim-misc'

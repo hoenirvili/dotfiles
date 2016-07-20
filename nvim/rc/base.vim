@@ -1,6 +1,7 @@
 syntax on
-"colorscheme blackboard
-colorscheme spiderhawk
+
+colorscheme monokain
+set background=dark
 set nocompatible
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
@@ -70,6 +71,12 @@ augroup phpSyntaxOverride
 	autocmd FileType php call PhpSyntaxOverride()
 augroup END
 
+augroup project
+	autocmd!
+	autocmd BufRead,BufNewFile *.h,*.c set filetype=c
+augroup END
+
+"set colorcolumn=80
 "set list
 "set listchars=tab:▸\ ,eol:¬
 
@@ -83,7 +90,6 @@ set wildignore+=*.gem
 set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
-
 let php_sql_query=1
 let php_htmlInStrings=1
 
