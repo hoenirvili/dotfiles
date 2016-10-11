@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/hoenir/Work/Go/src/github.com/juju/utils/ssh'
-let g:netrw_dirhist_2='/home/hoenir/Work/Go/src/github.com/juju/utils/winrm'
-let g:netrw_dirhist_3='/home/hoenir/Work/Go/src/github.com/juju/juju/.git'
-let g:netrw_dirhist_4='/home/hoenir/Work/Black-ship/.git'
-let g:netrw_dirhist_5='/home/hoenir/Work/dotfiles/scripts'
