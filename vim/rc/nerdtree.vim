@@ -8,4 +8,5 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Dirty"     : "✗",
     \ "Clean"     : "✔︎",
     \ "Unknown"   : "?"
-    \ }
+\ }
+let g:NERDTreeWinPos = "left"
