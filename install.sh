@@ -3,7 +3,6 @@
 # delcare constant paths
 declare -r BASE_PATH=$(pwd)
 declare -r VIMRC_PATH=$BASE_PATH/.vimrc
-declare -r VIM_PATH=$BASE_PATH/vim
 declare -r TMUX_PATH=$BASE_PATH/.tmux.conf
 declare -r SCRIPTS_PATH=$BASE_PATH/scripts
 declare -r BASH_PATH=$BASE_PATH/.bash
@@ -19,12 +18,6 @@ sleep 1
 # this directory and not other
 if [ ! -f $VIMRC_PATH ]; then
 	echo -e "[!] Cannot find vimrc config file"
-	exit 1
-fi
-
-
-if [ ! -d $VIM_PATH ]; then
-	echo -e "[!] Cannot find vim directory file"
 	exit 1
 fi
 
@@ -46,7 +39,6 @@ command -v rsync >/dev/null 2>&1 || {
 }
 
 # make the installation possible
-rsync -r --info=progress2 $VIM_PATH $HOME
 rsync -r --info=progress2 $VIMRC_PATH $HOME
 rsync -r --info=progress2 $TMUX_PATH $HOME
 rsync -r --info=progress2 $SCRIPTS_PATH $HOME
