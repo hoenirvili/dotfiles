@@ -4,7 +4,6 @@ set nocompatible
 
 " ================ General Config ====================
 
-set number                      "Line numbers are good
 set backspace=indent,eol,start  "Allow backspace in insert mode
 set history=1000                "Store lots of :cmdline history
 set showcmd                     "Show incomplete cmds down the bottom
@@ -17,6 +16,12 @@ set tm=500
 set autowrite                   "When :make write the file
 set autoread                    "Reload files changed outside vim
 set encoding=utf8               "Set utf8 as standard encoding and en_US as the standard language
+set fileencoding=utf-8
+set fileencodings=utf-8
+set fileformats=unix,dos,mac
+set bomb
+set binary
+set ttyfast
 set ffs=unix,dos,mac            "Use Unix as the standard file type
 let $LANG='en'                  "Avoid garbled characters in Chinese language windows OS
 set langmenu=en
@@ -28,7 +33,6 @@ set ruler                       "Always show current position
 set magic                       "For regular expressions turn magic on
 set mat=2                       "How many tenths of a second to blink when matching brackets
 
-set spell spelllang=en_us
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
@@ -42,6 +46,7 @@ syntax on
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'sonph/onehalf'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
@@ -51,11 +56,11 @@ Plug 'tomtom/tcomment_vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Valloric/YouCompleteMe'
-Plug 'nanotech/jellybeans.vim'
+Plug 'tomasr/molokai'
 Plug 'fatih/vim-go', {'for':['go']}
 Plug 'lervag/vimtex', {'for':['tex']}
 Plug 'w0rp/ale'
-
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
@@ -66,10 +71,14 @@ set nobackup
 set nowb
 
 " =============== Colorscheme =======================
-colorscheme jellybeans  "set colorscheme
 set t_Co=256            "enable 256 colors palette
 set background=dark     "set background color
-
+let g:rehash256 = 1     "use the 256 molokai color palette
+set termguicolors
+if &term =~ '256color'  "set terminal colorscheme issue
+  set t_ut=
+endif
+colorscheme molokai
 " ================ Indentation ======================
 
 set autoindent
@@ -130,10 +139,14 @@ autocmd BufReadPost *
 
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#formatter='unique_tail'
+let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline_skip_empty_sections = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='jellybeans'
+let g:airline_theme='deus'
 
-" ================= Mapping =========================
+"================= Mapping =========================
 
 " Change leader to a comma because the backslash is too far away
 " That means all \x commands turn into ,x
@@ -155,6 +168,8 @@ nmap <leader>w :w!<cr>
 
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
+nmap <Leader>o :setlocal spell! spelllang=en_us<CR>
+
 
 
 " ========== YouCompleteMe settings =================
@@ -184,7 +199,8 @@ let g:ycm_semantic_triggers =  {
 let g:go_fmt_command = "goimports"
 let g:go_disable_autoinstall = 0
 let g:go_metalinter_autosave = 1
-let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+let g:go_metalinter_enabled = ['govet', 'golint', 'errcheck']
+let g:go_def_mode = 'godef'
 let g:go_highlight_types = 1
 let g:go_highlight_interfaces = 1
 let g:go_term_enabled = 1
