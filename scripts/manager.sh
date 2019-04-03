@@ -12,7 +12,7 @@ function root
 }
 function options
 {
-	
+
 	echo
 	echo "Please choose the mode you wish your chipset to be set on"
 	echo "1.Monitor mode"
@@ -33,20 +33,20 @@ function options
 	     fi
 }
 
-function interface 
+function interface
 {
-	echo "Choose the interface you wish to manage" 
+	echo "Choose the interface you wish to manage"
 	echo -n "Interface : "
 	read interface
-	echo 
+	echo
 	echo "Your inteface is: $interface"
 	echo
 
 }
 
 function __run__
-{	 
+{
 		interface
-		options $interface				
+		options $interface
 }
 root
