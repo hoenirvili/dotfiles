@@ -7,18 +7,21 @@ let g:python3_host_skip_check = 1
 
 call plug#begin('~/.local/share/nvim/site/plugged')
 
-Plug 'fatih/vim-go', { 'tag': '*' , 'do': ':GoInstallBinaries'}
+Plug 'fatih/vim-go', { 'tag': '*' , 'do': ':GoInstallBinaries', 'for': 'go'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tomtom/tcomment_vim'
+Plug 'itchyny/lightline.vim'
 Plug 'matze/vim-move'
 Plug 'ervandew/supertab'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
-Plug 'ayu-theme/ayu-vim'
-Plug 'sheerun/vim-polyglot'
 Plug 'uarun/vim-protobuf'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
+Plug 'deoplete-plugins/deoplete-go', { 'do': 'make', 'for': 'go'}
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
 
@@ -28,20 +31,27 @@ let g:better_whitespace_enabled=1   "Enable highlighting whitespaces
 let g:strip_whitespace_on_save=1    "When I hit save, then strip all unnecessary white spaces
 
 "=============== General ============================
-
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors               "Enable true colors support
-let ayucolor="dark"             "For dark version of theme
-colorscheme ayu                 "Set ayu colorscheme
+colorscheme nord
+let g:nord_italic = 1           "Enable use of italics in nord theme
+let g:nord_underline = 1        "Enable use of underline in nord theme
+let g:nord_uniform_status_lines = 1
+let g:nord_comment_brightness = 15
+let g:nord_cursor_line_number_background = 1
+let g:nord_bold_vertical_split_line = 1
+let g:nord_uniform_diff_background = 1
+set number
+set completeopt-=preview        "Make this lways off because this drives me insane
 set completeopt+=noselect
 set showmode                    "Show current mode down the bottom
 set gcr=a:blinkon0              "Disable cursor blink
 set noerrorbells                "No annoying sounds on errors
 set novisualbell
-set cursorline                  "Highlight the line the cursor is on
 set textwidth=110               "Maximum columns to be inserted
 set colorcolumn=110             "Assign the vertical lign to be at a certain column position
 set clipboard=unnamed           "Make the same clipboard with the OS
-set laststatus=1
+set laststatus=2
 set list                        "Display hidden characters
 set listchars=tab:▸\ ,eol:¬     "Use listchars like in textmate
 set mouse=a                     "Enable mouse support, forgive me vim father because I have sin
@@ -177,13 +187,19 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 " ============= vim-go =============================
 
 let g:go_fmt_command = "goimports"
+" metalinter
 let g:go_metalinter_autosave = 1
-let g:go_metalinter_enabled = ['govet', 'golint', 'errcheck']
+let g:go_metalinter_autosave_enabled = ['vet',]
+let g:go_metalinter_enabled = ['govet', 'errcheck']
+let g:go_metalinter_disabled = ['golint']
+
+" go def
 let g:go_def_mode = 'godef'
+let g:go_asmfmt_autosave = 1
+
 let g:go_highlight_function_arguments=1
 let g:go_highlight_function_calls = 1
 let g:go_highlight_types = 1
-let g:go_term_enabled = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
@@ -192,6 +208,15 @@ let g:go_highlight_fields = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_format_strings = 1
 let g:go_highlight_generate_tags = 1
+
 let g:go_def_mapping_enabled = 1
 let g:go_fmt_fail_silently = 1
 let g:go_term_enabled = 1
+let g:go_addtags_transform = "snakecase"
+
+autocmd BufReadPost * if @% !~# '\.git[\/\\]COMMIT_EDITMSG$' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+
+"================ lightline =========================
+let g:lightline = {
+\ 'colorscheme': 'nord',
+\ }
