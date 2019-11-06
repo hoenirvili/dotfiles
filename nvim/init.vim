@@ -24,6 +24,7 @@ call plug#end()
 
 let g:better_whitespace_enabled=1   "Enable highlighting whitespaces
 let g:strip_whitespace_on_save=1    "When I hit save, then strip all unnecessary white spaces
+let g:strip_whitespace_confirm=0    "Don't ever ask me
 
 "=============== General ============================
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
@@ -44,8 +45,8 @@ set colorcolumn=80             "Assign the vertical lign to be at a certain colu
 set clipboard=unnamed           "Make the same clipboard with the OS
 set laststatus=2
 set number
-set list                        "Display hidden characters
-set listchars=tab:▸\ ,eol:¬     "Use listchars like in textmate
+"set list                        "Display hidden characters
+"set listchars=tab:▸\ ,eol:¬     "Use listchars like in textmate
 set mouse=a                     "Enable mouse support, forgive me vim father because I have sin
 set t_vb=
 set tm=500
@@ -182,6 +183,10 @@ let g:go_metalinter_disabled = ['golint']
 let g:go_def_mode = 'godef'
 let g:go_asmfmt_autosave = 1
 
+" disable vim-go :GoDef short cut (gd)
+" this is handled by LanguageClient [LC]
+let g:go_def_mapping_enabled = 0
+
 let g:go_highlight_function_arguments=1
 let g:go_highlight_function_calls = 1
 let g:go_highlight_types = 1
@@ -313,3 +318,4 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
