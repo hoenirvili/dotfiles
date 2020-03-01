@@ -81,6 +81,20 @@
           }
         }
       }
-  }
+  },
+
+  "coc.preferences.formatOnSaveFiletypes": ["css", "typescript", "Markdown", "javascript", "json", "graphql"],
+  "prettier.printWidth": 130,
+  "prettier.tabWidth": 4,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "none",
+  "prettier.bracketSpacing": false,
+  "prettier.parser":"flow",
+  "prettier.semi": false,
+  "prettier.useTabs": false,
+  "prettier.proseWrap":"preserve",
+  "prettier.arrowParens":"always",
+  "prettier.jsxBracketSameLine": true,
+  "prettier.jsxSingleQuote": false
 }
 

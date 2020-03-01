@@ -14,7 +14,9 @@ Plug 'tomtom/tcomment_vim'
 Plug 'matze/vim-move'
 Plug 'uarun/vim-protobuf'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'ayu-theme/ayu-vim'
+Plug 'Rigellute/rigel'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'vim-airline/vim-airline'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -31,8 +33,10 @@ let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 
 set termguicolors
-let ayucolor="dark"
-colorscheme ayu
+colorscheme rigel
+let g:rigel_airline = 1
+let g:airline_theme = 'rigel'
+let g:airline_powerline_fonts = 1
 
 set completeopt-=preview        "Make this lways off because this drives me insane
 set completeopt+=noselect
@@ -40,11 +44,11 @@ set showmode                    "Show current mode down the bottom
 set gcr=a:blinkon0              "Disable cursor blink
 set noerrorbells                "No annoying sounds on errors
 set novisualbell
-set textwidth=80               "Maximum columns to be inserted
-set colorcolumn=80             "Assign the vertical lign to be at a certain column position
+set textwidth=100               "Maximum columns to be inserted
+"set colorcolumn=120              "Assign the vertical lign to be at a certain column position
 set clipboard=unnamed           "Make the same clipboard with the OS
-set laststatus=2
-set number
+"set laststatus=2
+"set number
 "set list                        "Display hidden characters
 "set listchars=tab:▸\ ,eol:¬     "Use listchars like in textmate
 set mouse=a                     "Enable mouse support, forgive me vim father because I have sin
@@ -138,9 +142,9 @@ vnoremap <c-/> :TComment<cr>
 vmap < <gv
 vmap > >gv
 let g:move_key_modifier = 'C'
-map <Leader>a :bprev<Return>
-map <Leader>s :bnext<Return>
-map <Leader>d :bd<Return>
+map <Leader>z :bprev<Return>
+map <Leader>x :bnext<Return>
+map <Leader>c :bd<Return>
 nnoremap <C-p> :FZF<cr>
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -173,11 +177,6 @@ endfunction
 " ============= vim-go =============================
 
 let g:go_fmt_command = "goimports"
-" metalinter
-let g:go_metalinter_autosave = 1
-let g:go_metalinter_autosave_enabled = ['vet']
-let g:go_metalinter_enabled = ['govet', 'errcheck']
-let g:go_metalinter_disabled = ['golint']
 
 " go def
 let g:go_def_mode = 'godef'
@@ -318,4 +317,3 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-
