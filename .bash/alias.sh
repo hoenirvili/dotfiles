@@ -1,5 +1,0 @@
-alias unhide='ls -l -i -a --color=auto'
-alias ll='ls -lh'
-alias go-dir='cd ~/Work/Go/src/github.com/hoenirvili/'
-alias tkp='sh /home/hoenir/Documents/scripts/mouse.sh'
-alias last-sys-err='journalctl -b 0 -p err'
